@@ -6,9 +6,10 @@ import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 import { HttpBasicAuth } from '@core/middlewares/http-auth.middleware';
 import { BullBoardMiddleware } from '@core/middlewares/bull-board.middleware';
+import { AutoLoginModule } from './auto-login/auto-login.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, UsersModule],
+  imports: [CoreModule, AuthModule, UsersModule, AutoLoginModule],
   controllers: [AppController],
   providers: [AppService, Logger],
 })
