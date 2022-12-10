@@ -3,14 +3,14 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EnvVariable } from '@core/configs/joi.config';
-// import { UserRoles } from '../../users/users.model';
+import { UserRoles } from '../../users/users.model';
 
-// export class LoggedInUser {
-//   id: string;
-//   role: UserRoles;
-//   iat: number;
-//   exp: number;
-// }
+export class LoggedInUser {
+  id: string;
+  role: UserRoles;
+  iat: number;
+  exp: number;
+}
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -22,8 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  //TODO: add user module
-  // async validate(user: LoggedInUser): Promise<LoggedInUser> {
-  //   return user;
-  // }
+  async validate(user: LoggedInUser): Promise<LoggedInUser> {
+    return user;
+  }
 }

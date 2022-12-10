@@ -1,8 +1,8 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as bcrypt from 'bcrypt';
-//import { UserRoles } from '../../users/users.model';
-// import { LoggedInUser } from './jwt.strategy';
+import { UserRoles } from '../../users/users.model';
+import { LoggedInUser } from './jwt.strategy';
 import { JwtService } from '@nestjs/jwt';
 import { EnvVariable } from '@core/configs/joi.config';
 
@@ -37,13 +37,12 @@ export class AuthService {
     return true;
   }
 
-  //TODO: add role guards
-  // validateRoles(user: LoggedInUser, roles: UserRoles[]) {
-  //   if (!roles.includes(user.role)) {
-  //     throw new ForbiddenException();
-  //   }
-  //   return true;
-  // }
+  validateRoles(user: LoggedInUser, roles: UserRoles[]) {
+    if (!roles.includes(user.role)) {
+      throw new ForbiddenException();
+    }
+    return true;
+  }
 
   async generateJwtToken(user: IGetTokens) {
     const payload = {

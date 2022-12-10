@@ -36,4 +36,5 @@ export enum EnvVariable {
   REDIS_PORT = 'REDIS_PORT',
   JWT_SECRET = 'JWT_SECRET',
   API_TOKEN = 'API_TOKEN',
+  MONGODB_URL = 'MONGODB_URL',
 }
